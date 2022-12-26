@@ -1,0 +1,25 @@
+### Teste PJUS ###
+
+Informações sobre o teste e o arquivo adicionado:
+
+Como eu não tinha todas as bibliotecas instaladas, acabei gastando um tempo para grande isso, e para ajustar o ambiente de trabalho. 
+Dessa forma, consegui criar um Spark Session.
+
+Baixar os arquivos solicitados do ano de 2021 em formato csv. Analisar os dados de forma rápida e seguir para o código.
+
+No código, utilizei jupyter notebook para testar com mais velocidade (arquivo em anexo nesse repositório). 
+Entretanto, a lógica do problema foi a seguinte:
+
+1. Criar a Spark Session
+2. Utilizando biblioteca OS para diretório, realizar o acesso dos arquivos.
+3. Realizar a iteraçao dos arquivos dentro do diretório para que todos fossem lidos utilizando "spark.read.csv".
+4. Concatenar o dataframe referente ao conjunto das cidades (não rodei isso).
+5. Poderia usar o concat ou append (utilizei muito com Pandas e não com spark).
+6. Em seguida, para responder as perguntas utilizaria a função to_sql do pandas para enviar para um banco Postgre. 
+7. No banco postgre utilizaria queries para responder as perguntas, de acordo com o que foi solicitado. 
+
+Com um tempo maior e pensando no ecossistema eu armanezeria dados em .CSV - considerando a AWS como computaçao em nuvem - em um bucket S3. 1 subucket para cada cidade.
+Em seguida faria as transformações necessárias utilizando lambda function e enviaria para o DynamoDB todos os meses.
+Utilizaria bibliotecas como Psycopg2 e SQLAClchemy, etc. 
+E, por último, enviaria esses dados tratados para um banco Aurora, por exemplo. Para que outras pessoas pudessem visualizar esses dados e gerar relatórios subsequentes. 
+
